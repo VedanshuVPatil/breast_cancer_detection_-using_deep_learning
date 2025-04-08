@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Detection</title>
+</head>
+<body style="text-align:center; margin-top: 50px;">
+    <h1>Breast Cancer Detection</h1>
+    <form method="POST" action="/" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required />
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if prediction %}
+        <h3>Prediction: {{ prediction }}</h3>
+        <h3>Confidence: {{ confidence }}%</h3>
+        <img src="{{ url_for('static', filename=image_path) }}" alt="Uploaded Image" width="300" />
+    {% endif %}
+</body>
+</html>
+

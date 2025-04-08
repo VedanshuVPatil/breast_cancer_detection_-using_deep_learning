@@ -11,8 +11,9 @@ app = Flask(__name__)
 model = tf.keras.models.load_model("breast_cancer_vgg19_finetuned.h5")
 
 def preprocess_image(image):
+    image = image.convert("RGB")  
     image = image.resize((224, 224))
-    image = np.array(image) / 255.0  # Normalize
+    image = np.array(image) / 255.0  
     image = np.expand_dims(image, axis=0)
     return image
 
